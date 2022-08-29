@@ -1,0 +1,18 @@
+MySQL
+Usuário: Vitor_Barros
+Senha: Analog210688
+Senha root mysql: Analog21@
+
+Comandos básicos terminal python
+
+ativar ambiente virtual = .\env\Scripts\Activate.ps1
+intalar pacotes = python -m pip install NOME DO PACOTE
+
+echo 'env' > .gitignore = não salva no arquivo git
+
+pip freeze > requirements.txt = salva o nome e versões das bibliotecas utilizadas
+
+no flask windows não se utiliza export e sim set = set FLASK_APP=Desapegando
+
+mkdir = criação de diretórios
+

@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desapega 3D Print</title>
+    
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+
+</head>
+
+<body>
+    <h4>Letting go 3D Print </h4>
+
+
+
+    <section class=" col-lg-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href={{url_for("index") }}>Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href={{ url_for("usuario") }}> Cadastre-se</a>
+                            <a class="dropdown-item" href={{ url_for("anuncio") }}> Cadastre seu Anuncio</a>
+                            <a class="dropdown-item" href={{ url_for("categoria") }}> Config Categoria</a>
+                            <a class="dropdown-item" href={{ url_for("logout") }}> Logout</a>
+                            <a class="dropdown-item" href="#">Relatório de vendas</a>
+                            <a class="dropdown-item" href="#">Relatório de compras</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ofertas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Favoritos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">contato</a>
+                    </li>
+                            
+                    <form class="form-inline col-2">
+                        <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+
+                    </form>
+
+                </ul>
+
+            </div>
+        </nav>
+    </section>
+
+    
+    <h4>Cadastro de {{titulo}}</h4>
+    <form action="/anuncio/novo" method="post">
+        <p><label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome"></p>
+
+        <p><label for="desc">Desc</label>
+        <textarea rows="4" cols="50" id="desc" name="desc"></textarea></p>       
+
+        <p><label for="qtd">Quantidade</label>
+        <input type="text" id="qtd" name="qtd"></p>
+
+        <p><label for="preco">Preco</label>
+        <input type="text" id="preco" name="preco"></p>
+        
+        <p><label for="cat">Categoria</label>
+        <select id="cat" name="cat">
+            {% for categoria in categorias %} 
+                <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+            {% endfor %}
+        </select></p>
+
+        <p><label for="usu">Usuario</label>
+        <input type="text" id="uso" name="uso"></p>
+
+        <p><input type="submit" value="Cadastrar"></p>
+    </form>
+
+    <h4>Lista de {{titulo}}</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Desc</th>
+                <th>Qtd</th>
+                <th>Preco</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for anuncio in anuncios %}
+                <tr>
+                    <td>{{ anuncio.nome }}</td>
+                    <td>{{ anuncio.desc }}</td>
+                    <td>{{ anuncio.qtd }}</td>
+                    <td>{{ anuncio.preco }}</td>
+                    <td>{{ anuncio.cat_id }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
+
